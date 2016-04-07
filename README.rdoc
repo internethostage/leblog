@@ -1,11 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This blog is being passionately built from 'scratch' by Cristian at the CodeCore Bootcamp, March 2016.
+
+o(〃＾▽＾〃)o
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: ruby 2.2.1p85 (2015-02-26
+* Rails version: 4.2.6
 
 * System dependencies
 
@@ -22,7 +24,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
