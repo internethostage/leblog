@@ -1,0 +1,9 @@
+<h1>All Comments</h1>
+
+<% @comments.each do |comment|  %>
+  <div>
+    <h2><%= link_to comment.body, comment_path(comment) %></h2>
+    <p><%= comment.body %></p>
+    <hr>
+  </div>
+<% end %>

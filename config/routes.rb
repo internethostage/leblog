@@ -18,6 +18,16 @@ Rails.application.routes.draw do
   # delete  "/posts/:id"      => "posts#destroy"
 
 
+  resources :comments
+  # get       "/comments/new"       => "comments#new",    as: :new_comment
+  # post      "/comments"           => "comments#create", as: :comments
+  # get       "/comments/:id"       => "comments#show",   as: :comment
+  # get       "/comments"           => "comments#index"
+  # get       "/comments/:id/edit"  => "comments#edit",   as: :edit_comment
+  # patch     "/comments/:id"       => "comments#update"
+  # delete    "/comments/:id"       => "comments#destroy"
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
