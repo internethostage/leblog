@@ -20,7 +20,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
+    if params[:search]
+      @posts = Post.search(params[:search]).order("created_at").paginate(:page => params[:page], :per_page => 10)
+    else
+      @posts = Post.paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def edit
