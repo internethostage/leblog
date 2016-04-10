@@ -8,3 +8,5 @@ Things you may want to cover:
 
 * Ruby version: ruby 2.2.1p85 (2015-02-26
 * Rails version: 4.2.6
+
+* April 10, 2016 Added search and pagination for posts! 
