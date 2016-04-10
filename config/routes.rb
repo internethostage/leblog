@@ -6,6 +6,17 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'about' => 'home#about'
+
+  get     "/posts/new"      => "posts#new",     as: :new_post
+  post    "/posts"          => "posts#create",  as: :posts
+  get     "/posts/:id"      => "posts#show",    as: :post
+  get     "/posts"          => "posts#index"
+  get     "/posts/:id/edit" => "posts#edit",    as: :edit_post
+  patch   "/posts/:id"      => "posts#update"
+  delete  "/posts/:id"      => "posts#destroy"
+
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
