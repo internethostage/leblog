@@ -16,6 +16,8 @@
   <%= link_to "Add New Blog Post", new_post_path %>
   <hr>
 
+<%= flash[:notice] || flash[:alert] %>
+
 <%= yield %>
 
 </body>
