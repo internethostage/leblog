@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :find_comment, only: [:show, :edit, :update, :destroy]
+  before_action :find_comment, only: [:edit, :update, :destroy]
 
 
   def new
@@ -8,16 +8,19 @@ class CommentsController < ApplicationController
   end
 
   def create
-  @comment = Comment.create comment_params
+    @post = Post.find params[:post_id]
+    @comment = Comment.create comment_params
+    @comment.post = @post
     if @comment.save
-      redirect_to comment_path(@comment), notice: "Comment added successfully"
+      redirect_to post_path(@post), notice: "Comment added successfully"
     else
-      render :new
+      render "/posts/show"
     end
   end
 
 
   def show
+    @comment = Comment.find(params[:id])
   end
 
   def index

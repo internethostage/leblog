@@ -41,10 +41,11 @@ group :development, :test do
   gem 'interactive_editor'
   gem 'awesome_print'
   gem 'hirb'
-  gem 'pry'
-  gem 'pry-rails'
-  gem 'pry-doc'
+  # gem 'pry'
+  # gem 'pry-rails'
+  # gem 'pry-doc'
   gem 'faker'
+  gem 'rspec-rails'
 end
 
 group :development do
