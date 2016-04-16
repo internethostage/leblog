@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
 
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   # get     "/posts"          => "posts#index",   as: :posts
   # post    "/posts"          => "posts#create"
   # get     "/posts/new"      => "posts#new",     as: :new_post
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
   # delete  "/posts/:id"      => "posts#destroy"
 
 
-  resources :comments
+
   # get       "/comments/new"       => "comments#new",    as: :new_comment
   # post      "/comments"           => "comments#create", as: :comments
   # get       "/comments/:id"       => "comments#show",   as: :comment

@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -17,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def index
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :category_id)
   end
 
   def find_post
