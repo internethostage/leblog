@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 
   get 'about' => 'home#about'
 
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
+
+  resources :users, only: [:new, :create, :edit, :update]
 
   resources :posts do
     resources :comments

@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :category
+  belongs_to :user
 
 # This validation ensures that there is a title added and that it doesn't already exist
 validates :title, {presence: {message: "can't be blank!"}, length: { minimum: 7 }, uniqueness: {message: "already exists, please try a different one!"}}
@@ -21,6 +22,10 @@ validates :body, {presence: {message: "can't be blank!"}}
     else
       body
     end
+  end
+
+  def user_full_name
+    user ? user.full_name : ""
   end
 
 

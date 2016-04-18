@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -7,7 +8,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create post_params
-
+    @user = @current_user
+    @post.user = current_user
     if @post.save
       redirect_to post_path(@post), notice: "Post created successfully"
     else
@@ -17,6 +19,12 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
+      if @post.category_id
+         @category = Category.find(@post.category_id).title.titleize
+      else
+        @category = "Not specified"
+      end
+
   end
 
   def index

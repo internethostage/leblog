@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :find_comment, only: [:edit, :update, :destroy]
 
 
@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
     @post = Post.find params[:post_id]
     @comment = Comment.create comment_params
     @comment.post = @post
+    @user = current_user
+    @comment.user = @user
     if @comment.save
       redirect_to post_path(@post), notice: "Comment added successfully"
     else
