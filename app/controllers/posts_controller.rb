@@ -37,9 +37,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    redirect_to root_path, alert: "Access denied" unless can? :edit, @post
   end
 
   def update
+    redirect_to root_path, alert: "Access denied" unless can? :update, @post
     if @post.update post_params
       redirect_to post_path(@post)
     else
@@ -48,6 +50,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    redirect_to root_path, alert: "Access denied" unless can? :destroy, @post
     @post.destroy
     redirect_to posts_path
   end
