@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_comment, only: [:edit, :update, :destroy]
+  before_action :find_post
+  before_action :find_comment
+  before_action :find_and_authorize_comment, only: :destroy
 
 
   def new
@@ -41,8 +43,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+  @post = Post.find params[:post_id]
   @comment.destroy
-  redirect_to comments_path
+  redirect_to post_path(@post)
   end
 
 
@@ -53,8 +56,17 @@ private
     params.require(:comment).permit(:body)
   end
 
+  def find_post
+    @post = Post.find params[:post_id]
+  end
+
   def find_comment
     @comment = Comment.find params[:id]
+  end
+
+  def find_and_authorize_comment
+    @comment = @post.comments.find params[:id]
+    head :unauthorized unless (can? :destroy, @comment) || (can? :manage, @comment)
   end
 
 
