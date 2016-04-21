@@ -24,7 +24,6 @@ class PostsController < ApplicationController
       else
         @category = "Not specified"
       end
-
   end
 
   def index
