@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :post do
     association :user, factory: :user
-    title             { Faker::Lorem.sentence }
+    association :category, factory: :category
+    sequence(:title)  {|n| "#{Faker::Lorem.sentence} #{n}" }
     body              { Faker::Hacker.say_something_smart }
-    category_id       { 1 + rand(5) }
   end
 end
