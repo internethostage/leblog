@@ -11,6 +11,6 @@
 #                 body:   Faker::Hipster.paragraph
 # end
 
-15.times do
-  Category.create(title: Faker::Hacker.adjective)
-end
+# 15.times do
+#   Category.create(title: Faker::Hacker.adjective)
+# end
