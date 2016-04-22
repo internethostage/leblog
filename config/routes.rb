@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :favourites, only: [:create, :destroy]
   end
+
+  get       "/favourites"     => "favourites#index",   as: :user_favourite_posts 
   # get     "/posts"          => "posts#index",   as: :posts
   # post    "/posts"          => "posts#create"
   # get     "/posts/new"      => "posts#new",     as: :new_post
