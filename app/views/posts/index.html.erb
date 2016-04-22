@@ -5,14 +5,26 @@
   <%= submit_tag "Search" %>
 <% end %>
 
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>Post Title</th>
+        <th>Preview</th>
+        <th>Date Added</th>
+      </tr>
+    </thead>
+    <% @posts.each do |post| %>
+    <tbody>
+      <tr>
+        <td><%= link_to post.title, post_path(post) %></td>
+        <td><%= post.body %></td>
+        <td>Column content</td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 
 
-<% @posts.each do |post| %>
-  <div>
-    <h2><%= link_to post.title, post_path(post) %></h2>
-    <p><%= post.body %></p>
-    <hr>
-  </div>
-  <% end %>
-
-  <%= will_paginate @posts %>
+<div class="pagination center-block text-center">
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
