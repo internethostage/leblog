@@ -1,7 +1,12 @@
 class Post < ActiveRecord::Base
-  has_many :comments, dependent: :destroy
   belongs_to :category
   belongs_to :user
+
+  has_many :comments, dependent: :destroy
+
+  has_many :favourites, dependent: :destroy
+  has_many :users, through: :favourites
+
 
 # This validation ensures that there is a title added and that it doesn't already exist
 validates :title, {presence: {message: "can't be blank!"}, length: { minimum: 7 }, uniqueness: {message: "already exists, please try a different one!"}}
@@ -26,6 +31,14 @@ validates :body, {presence: {message: "can't be blank!"}}
 
   def user_full_name
     user ? user.full_name : ""
+  end
+
+  def favourited_by?(user)
+  favourites.find_by_user_id(user.id).present?
+  end
+
+  def favourites_for(user)
+  favourites.find_by_user_id user if user
   end
 
 

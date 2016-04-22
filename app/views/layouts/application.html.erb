@@ -17,6 +17,7 @@
   |
   <% if user_signed_in? %>
     Hello <%= link_to current_user.full_name, edit_user_path(current_user) %>,
+    <%= link_to "Your favourite posts", user_favourite_posts_path %>,
     <%= link_to "Log out", sessions_path, method: :delete,
                                           data: {confirm: "are you sure you want to log out?"} %>
   <% else %>

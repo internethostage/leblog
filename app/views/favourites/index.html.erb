@@ -1,0 +1,4 @@
+<h1>Favourite Posts</h1>
+<% current_user.favourited_posts.each do |post| %>
+<li><%= link_to post.title, post_path(post) %></li>
+<% end %>
