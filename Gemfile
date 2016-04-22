@@ -25,10 +25,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Gem to create paginations
 gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 1.13', '>= 1.13.1'
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'autoprefixer-rails'
+gem 'bootswatch-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
