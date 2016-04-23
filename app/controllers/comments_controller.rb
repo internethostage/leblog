@@ -16,6 +16,9 @@ class CommentsController < ApplicationController
     @user = current_user
     @comment.user = @user
     if @comment.save
+      if @comment.user != @post.user
+        CommentsMailer.notify_post_owner(@comment).deliver_now
+      end
       redirect_to post_path(@post), notice: "Comment added successfully"
     else
       render "/posts/show"

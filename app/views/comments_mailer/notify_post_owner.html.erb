@@ -1,0 +1,7 @@
+<h1>Hello <%= @owner.first_name %></h1>
+<p>Your post "<%= @post.title %>" received a comment.</p>
+<p>Comment: <%= @comment.body %></p>
+<p>Click <%= link_to "here", post_url(@post) %> to view your post.</p>
+<p>Regards</p>
+<br>
+<p>Team LeBlog</p>
