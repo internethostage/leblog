@@ -14,3 +14,7 @@
 # 15.times do
 #   Category.create(title: Faker::Hacker.adjective)
 # end
+
+30.times do
+  Tag.create(name: Faker::Book.genre)
+end
