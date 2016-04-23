@@ -7,6 +7,9 @@ class Post < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
 
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
+
 
 # This validation ensures that there is a title added and that it doesn't already exist
 validates :title, {presence: {message: "can't be blank!"}, length: { minimum: 7 }, uniqueness: {message: "already exists, please try a different one!"}}

@@ -19,5 +19,11 @@
     <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
+
+  <div>
+    <%= f.label :tag_ids, "Tags" %>
+    <br>
+    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name %>
+  </div>
   <%= f.submit %>
 <% end %>
