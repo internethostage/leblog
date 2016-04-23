@@ -35,6 +35,9 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
