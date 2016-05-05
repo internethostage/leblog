@@ -5,7 +5,7 @@
       <tr>
         <th>Post Title</th>
         <th>Preview</th>
-        <th>Date Added</th>
+        <th>Comments</th>
       </tr>
     </thead>
     <% @posts.each do |post| %>
@@ -13,7 +13,7 @@
       <tr>
         <td><%= link_to post.title, post_path(post) %></td>
         <td><%= post.body %></td>
-        <td>Column content</td>
+        <td class="text-center"><%= post.comments.count %></td>
       </tr>
     </tbody>
     <% end %>
