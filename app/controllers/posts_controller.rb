@@ -24,6 +24,11 @@ class PostsController < ApplicationController
       else
         @category = "Not specified"
       end
+    respond_to do |format|
+      format.html {render}
+      format.json  { render :json => {:post => @post,
+                                      :comments => @post.comments }}
+    end
   end
 
   def index
@@ -32,6 +37,13 @@ class PostsController < ApplicationController
       @posts = Post.search(params[:search]).order("created_at").paginate(:page => params[:page], :per_page => 10)
     else
       @posts = Post.paginate(:page => params[:page], :per_page => 10)
+    end
+    respond_to do |format|
+      format.html {render}
+      # format.json  { render :json => {posts: Post.all.as_json(methods: :body_snippet,
+      #                                                                     only: [:id, :title,])}}
+      # alternative way to achieve above, but 3-5x slower
+      format.json {render json: Post.all.select([:body, :id, :title]), methods: [:body_snippet], only: [:id, :title, :body_snippet]}
     end
   end
 
