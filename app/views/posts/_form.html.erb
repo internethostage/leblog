@@ -1,29 +1,13 @@
-<% if @post.errors.any? %>
-  <ul>
-    <% @post.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+  <%= simple_form_for @post do |f| %>
+      <h3>Post Title:</h3>
+      <%= f.input :title, label: false, placeholder: "Blog Post Title", input_html: { class:"form-control" }%>
+      <h3>Category:</h3>
+      <%= f.association :category, label: false, include_blank: "Choose a post category" %>
+      <h3>Tags:</h3>
+      <%= f.association :tags, label: false, input_html: {class: "chosen-select"} %>
+      <h3>Blog Post:</h3>
+      <%= f.input :body, label: false, placeholder:"Add Your Blog Post Body Here...", input_html: { class:"form-control", rows: 8 } %>
+    <%= f.submit class:"btn btn-success btn-lg"%>
   <% end %>
-
-<%= form_for @post do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :category %>
-    <%= f.collection_select :category_id, Category.order(:title), :id, :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-
-  <div>
-    <%= f.label :tag_ids, "Tags" %>
-    <br>
-    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name %>
-  </div>
-  <%= f.submit %>
-<% end %>
+</div>

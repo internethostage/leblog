@@ -16,3 +16,8 @@ input#search {
     height: 30px;
     font-size: 1.2em;
 }
+
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+  padding-left: 10px !important;
+  height: 45px !important;
+}

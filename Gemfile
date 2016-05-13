@@ -35,9 +35,23 @@ gem 'cancancan', '~> 1.13', '>= 1.13.1'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
+gem "font-awesome-rails"
 
+# To make form making a ton easier
+gem 'simple_form'
+
+#These 2 gems add a nice list for multiple tags
+gem 'compass-rails'
+gem 'chosen-rails'
+gem 'bootstrap-chosen-rails'
+
+#This gem helps with turbolinks issues on the chosen gem above.
+gem 'jquery-turbolinks'
+
+#This gem allows to add actions to delayed (external worker), job web is a web interface to view queued jobs
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
+
 gem 'rack-cors', :require => 'rack/cors'
 
 # Use Unicorn as the app server
