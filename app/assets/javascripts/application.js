@@ -17,4 +17,5 @@
 //= require bootstrap-sprockets
 //= require chosen-jquery
 //= require posts
+//= flashmsgdisabler
 //= require_tree .
