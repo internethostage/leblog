@@ -1,35 +1,43 @@
-<h1>Sign up</h1>
+<h1>Create an account</h1>
 
-<% if @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
 
-<%= form_for @user do |f| %>
-  <div>
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+  <%= simple_form_for @user do |f| %>
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+      </span>
+    <%= f.input :first_name, label: false, placeholder: "First Name", input_html: { class:"form-control form-with-icon input-lg" }, label_html: { class:"input-lg" } %>
   </div>
-  <div>
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+      </span>
+    <%= f.input :last_name, label: false, placeholder: "Last Name", input_html: { class:"form-control form-with-icon input-lg" }, label_html: { class:"input-lg" } %>
   </div>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+      </span>
+      <%= f.input :email, label: false, placeholder: "Email", input_html: { class:"form-control form-with-icon input-lg" }, label_html: { class:"input-lg" }%>
   </div>
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="fa fa-key fa-2x" aria-hidden="true"></i>
+      </span>
+    <%= f.input :password, label: false, placeholder: "Password", input_html: { class:"form-control form-with-icon input-lg" }, label_html: { class:"input-lg" } %>
   </div>
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="fa fa-key fa-2x" aria-hidden="true"></i>
+      </span>
+    <%= f.input :password_confirmation, label: false, placeholder: "Password Confirmation", input_html: { class:"form-with-icon form-control input-lg" }, label_html: { class:"input-lg" } %>
   </div>
+
+  <br>
   <div>
-    <%= f.submit "Create Account" %>
+  <%= f.submit "Create account!", class:"btn btn-success btn-lg"%>
   </div>
-<% end %>
+  <% end %>
+
+</div>

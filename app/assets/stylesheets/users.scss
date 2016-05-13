@@ -1,3 +1,31 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+input.form-with-icon {
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+}
+
+input.form-without-icon {
+  border-radius: 5px !important;
+}
+
+.just-the-label {
+  height: 52px;
+  padding: 12px 24px;
+  font-size: 19px;
+  line-height: 1.3333333;
+  border-radius: 0;
+}
+
+.input-group {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+span.input-group-addon {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  max-width: 57px;
+}

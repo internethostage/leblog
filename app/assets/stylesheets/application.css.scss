@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require chosen-compass
  *= require_tree .
  *= require_self
  */
@@ -29,3 +30,7 @@ body { padding-top: 60px; }
 
 // And finally bootswatch style itself
 @import "bootswatch/flatly/bootswatch";
+
+@import "chosen";
+@import "bootstrap-chosen";
+@import "font-awesome";

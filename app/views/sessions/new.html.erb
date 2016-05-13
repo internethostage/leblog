@@ -1,16 +1,24 @@
-<h1>Sign In</h1>
+<h1>Log In</h1>
+<div class="col-lg-8 col-md-6 col-sm-10 col-xs-12">
+  <br>
+  <%= simple_form_for :signin, {url: sessions_path } do |f| %>
 
-<%= form_tag sessions_path do %>
-  <div>
-    <%= label_tag :email %>
-    <%= email_field_tag :email %>
-  </div>
-  <div>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+      </span>
+      <%= f.input :email, label: false, placeholder: "Ex. user@mail.com", input_html: { class:"form-control form-with-icon input-lg" }, label_html: { class:"input-lg" }%>
   </div>
 
-  <div>
-    <%= submit_tag "Log In" %>
+
+  <div class="input-group">
+      <span class="input-group-addon">
+          <i class="fa fa-key fa-2x" aria-hidden="true"></i>
+      </span>
+    <%= f.input :password, label: false, placeholder: "Password", input_html: { class:"form-control form-with-icon input-lg" }, label_html: { class:"input-lg" } %>
   </div>
-<% end %>
+
+    <br>
+    <%= f.button :submit, "Sign In", class: "btn-success btn-lg" %>
+  <% end %>
+</div>
