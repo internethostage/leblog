@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_post, only: [:show, :edit, :update, :destroy]
 
+
   def new
     @post = Post.new
   end
@@ -27,7 +28,9 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html {render}
       format.json  { render :json => {:post => @post,
-                                      :comments => @post.comments }}
+                                      :comments => @post.comments,
+                                      :user => @post.user
+                                      }}
     end
   end
 
@@ -43,7 +46,11 @@ class PostsController < ApplicationController
       # format.json  { render :json => {posts: Post.all.as_json(methods: :body_snippet,
       #                                                                     only: [:id, :title,])}}
       # alternative way to achieve above, but 3-5x slower
-      format.json {render json: Post.all.select([:body, :id, :title]), methods: [:body_snippet], only: [:id, :title, :body_snippet]}
+      format.json {paginate json: Post.select([:body, :id, :title]), per_page:5, methods: [:body_snippet], only: [:id, :title, :body_snippet]}
+        # posts = Post.all
+        #
+        # format.json { paginate json: posts, per_page: 5 }
+
     end
   end
 
