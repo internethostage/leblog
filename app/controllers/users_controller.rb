@@ -37,3 +37,6 @@ before_action :find_user, only: [:edit, :update]
   end
 
 end
+
+
+# TODO ADD PASSWORD RESET
