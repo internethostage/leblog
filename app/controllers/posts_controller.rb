@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "Post created successfully"
     else
+      flash.now[:alert] = "There wasn an error, please check details..."
       render :new
     end
   end
