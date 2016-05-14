@@ -3,8 +3,11 @@
 <p>Category: <%= @category %> </p>
 <p>Body: <%= @post.body %> </p>
 <p>Created: <%= @post.created_at %> </p>
-<p>Tags: <%= @post.tags.map{|t| t.name }.join(", ") %></p>
-  <br>
+<p>Tags: <% @post.tags.each do |e| %>
+          <span class="label label-default"><%= e.name %></span>
+          <% end %>
+</p>
+<br>
 
 <% if can? :edit, @post %>
 <%= link_to "Edit", edit_post_path(@post) %>
