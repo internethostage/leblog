@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
+    @comments = Comment.order("created_at desc")
   end
 
   def edit
@@ -43,7 +43,10 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update comment_params
-      redirect_to comment_path(@comment)
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.js { render }
+      end
     else
       render :edit
     end

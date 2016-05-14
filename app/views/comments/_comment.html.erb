@@ -1,6 +1,14 @@
 <div id='<%= dom_id(comment) %>'>
 <p>Added by: <%= comment.user_full_name %></p>
 <p><%= comment.body %></p>
+<% if can? :edit, @post %>
+<%= link_to "Edit", edit_post_comment_path(@post, comment),
+                      remote: true,
+                      data: {toggle: "modal", target: "#edit-comment"},
+                      class: "btn btn-primary btn-sm" %>
+
+
+<% end %>
 <% if can? :destroy, comment %>
 <%= link_to "Delete", post_comment_path(@post, comment),
                       method: :delete,
