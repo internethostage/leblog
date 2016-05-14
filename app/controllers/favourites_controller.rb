@@ -2,7 +2,6 @@ class FavouritesController < ApplicationController
   before_action :authenticate_user!
   before_action :post, only: [:create, :destroy]
 
-
   def create
     favourite       = Favourite.new
     favourite.post  = post

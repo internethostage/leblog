@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="navbar-text"><%= current_user.first_name %></li>
-          <li class="<%= 'active' if current_page?(user_favourite_posts_path) %>"><a href="<%= user_favourite_posts_path %>">Favourites</a></li>
+          <li class="<%= 'active' if current_page?(user_favourite_posts_path) %>"><a href="<%= user_favourite_posts_path %>">Favourites <span class="label label-success"><%= current_user.favourites.length %></span></a></li>
           <li><%= link_to "Logout", sessions_path, method: :delete,
                       data: {confirm: "are you sure you want to log out?"}%></li>
         <% else %>
