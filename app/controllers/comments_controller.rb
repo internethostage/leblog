@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.order("created_at desc")
+    @comments = Comment.all
   end
 
   def edit

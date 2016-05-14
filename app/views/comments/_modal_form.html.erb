@@ -1,5 +1,5 @@
 <%= @comment.errors.full_messages.join(", ") %>
-<%= form_for [@post, @comment], remote: true do |f|  %>
+<%= simple_form_for [@post, @comment], remote: true do |f|  %>
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,7 +7,7 @@
         <h4 class="modal-title" id="myModalLabel">Edit Comment</h4>
       </div>
       <div class="modal-body">
-        <%= f.text_area :body %>
+        <%= f.input :body, label: false, placeholder:"Add Your Comment Here...", input_html: { class:"form-control", rows: 4 } %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
