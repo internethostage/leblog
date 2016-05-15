@@ -1,7 +1,7 @@
 <div id='<%= dom_id(comment) %>'>
 <p>Added by: <%= comment.user_full_name %></p>
 <p><%= comment.body %></p>
-<% if can? :edit, @post %>
+<% if can? :edit, comment %>
 <%= link_to "Edit", edit_post_comment_path(@post, comment),
                       remote: true,
                       data: {toggle: "modal", target: "#edit-comment"},
