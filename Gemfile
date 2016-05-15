@@ -54,6 +54,9 @@ gem "delayed_job_web"
 
 gem 'rack-cors', :require => 'rack/cors'
 
+# Adds oauth via twitter
+gem 'omniauth-twitter'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

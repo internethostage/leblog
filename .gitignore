@@ -13,4 +13,6 @@
 !/log/.keep
 /tmp
 
+/config/secrets.yml
+
 /.imdone
