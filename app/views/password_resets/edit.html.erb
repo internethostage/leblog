@@ -1,0 +1,12 @@
+<div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
+  <h1>Enter a new password</h1>
+  <%= simple_form_for @user, url: password_reset_path(@user.password_reset_token) do |f| %>
+    <div>
+      <%= f.input :password %>
+    </div>
+    <div>
+      <%= f.input :password_confirmation %>
+    </div>
+    <%= f.submit "Reset Password", class:"btn btn-success btn-lg" %>
+  <% end %>
+</div>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     delete :destroy, on: :collection
   end
 
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
   resources :users, only: [:new, :create, :edit, :update]
 
   resources :posts do

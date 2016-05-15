@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_password
 
-  #validate current password when the user is updated
-  validate :current_password_is_correct, on: :update
 
   has_many :posts,    dependent: :nullify
   has_many :comments, dependent: :nullify
@@ -23,20 +21,24 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  # Check if the inputted current password is correct when the user tries to update the password
-  def current_password_is_correct
-    # Check if the user tried changing password
-    if !password.blank?
-      #Get a reference to the user since "authenticate" method always returns false when calling on itself
-      user = User.find_by_id(id)
-
-      # Check if the user cannot be authenticated with the entered current password
-      if (user.authenticate(current_password) == false)
-        #Add an error stating that the current password is incorrect
-        errors.add(:current_password, "is incorrect.")
-      end
-    end
+  def generate_password_reset_data
+    generate_password_reset_token
+    self.password_reset_requested_at = Time.now
+    save
   end
+
+  def password_reset_expired?
+    password_reset_requested_at <= 60.minutes.ago
+  end
+
+  private
+
+  def generate_password_reset_token
+    begin
+      self.password_reset_token = SecureRandom.hex(32)
+    end while User.exists?(password_reset_token: self.password_reset_token)
+  end
+
 
 
 end
