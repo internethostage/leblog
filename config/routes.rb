@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     resources :favourites, only: [:create, :destroy]
   end
 
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :posts
+    end
+  end
+
   get       "/favourites"     => "favourites#index",   as: :user_favourite_posts
   # get     "/posts"          => "posts#index",   as: :posts
   # post    "/posts"          => "posts#create"
