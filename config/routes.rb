@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   get 'about' => 'home#about'
 
+  get "/auth/twitter", as: :sign_in_with_twitter
+  get "/auth/:provider/callback" => "callbacks#index"
+
   resources :sessions, only: [:new, :create] do
     delete :destroy, on: :collection
   end
