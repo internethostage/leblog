@@ -1,17 +1,15 @@
 <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
   <h1>Reset Password</h1>
-
-<%# form_tag password_resets_path do %>
-  <!-- <div> -->
-    <%# label_tag :email %>
-    <%# email_field_tag :email %>
-  <!-- </div> -->
-  <%# submit_tag "Email me Reset Instructions", class:"btn btn-success" %>
-<%# end %>
-
+  <p>Input your email to receive password reset instructions</p>
 
   <%= simple_form_for :passwordreset, {url: password_resets_path } do |f| %>
-  <%= f.input :email %>
-  <%= f.submit "Email me Reset Instructions", class:"btn btn-success"%>
+  <div class="input-group">
+        <span class="input-group-addon">
+            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+        </span>
+    <%= f.input :email, label: false, placeholder: "Ex. user@mail.com", input_html: { class:"form-control form-with-icon input-lg" }, label_html: { class:"input-lg" } %>
+  </div>
+  <br>
+  <%= f.submit "Email Me Reset Instructions", class:"btn btn-success"%>
   <% end %>
 </div>
