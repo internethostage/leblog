@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
 
   get "/auth/twitter", as: :sign_in_with_twitter
+  get "/auth/github", as: :sign_in_with_github
   get "/auth/:provider/callback" => "callbacks#index"
 
   resources :sessions, only: [:new, :create] do

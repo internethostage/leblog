@@ -1,5 +1,12 @@
-<h1>Log In</h1>
 <div class="col-lg-8 col-md-6 col-sm-10 col-xs-12">
+  <h1>Log In</h1>
+  <br>
+  <div class="text-center">
+    <a href="<%= sign_in_with_github_path %>" class="btn btn-sm btn-info"><i class="fa fa-2x fa-github" aria-hidden="true"></i> Log in with GitHub</a>
+    <a href="<%= sign_in_with_twitter_path %>" class="btn btn-sm btn-info"><i class="fa fa-2x fa-twitter" aria-hidden="true"></i> Log in with Twitter</a>
+  </div>
+  <hr>
+<h3 class="text-center">Or Log In With Your Email</h3>
   <br>
   <%= simple_form_for :signin, {url: sessions_path } do |f| %>
 
@@ -19,9 +26,11 @@
   </div>
 
     <br>
-    <%= f.button :submit, "Sign In", class: "btn-success btn-lg" %>
+    <%= f.button :submit, "Log In", class: "btn-success btn-lg center-block" %>
   <% end %>
   <br>
   <br>
   <%= link_to "Forgot your password? Click to reset", new_password_reset_path %>
+  <br>
+  <br>
 </div>
