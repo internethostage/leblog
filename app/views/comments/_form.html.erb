@@ -6,12 +6,15 @@
   </ul>
 <% end %>
 
-<%= form_for [@post, @comment], remote: true do |f| %>
+<%= simple_form_for [@post, comment], remote: true do |f| %>
   <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.input :body, label: false, placeholder:"Add Your Comment Here...", input_html: { class:"form-control", rows: 4 } %>
   </div>
   <div>
-  <%= f.submit "Add comment" %>
+  <%= f.submit "Add comment", class:"btn btn-success btn-lg" %>
   </div>
+  <br>
+  <br>
+  <br>
+  <br>
   <% end %>

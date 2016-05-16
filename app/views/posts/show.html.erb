@@ -1,26 +1,46 @@
-<h1><%= @post.title %> </h1>
-<p>Author: <%= @post.user_full_name %>
-<p>Category: <%= @category %> </p>
-<p>Body: <%= @post.body %> </p>
-<p>Created: <%= @post.created_at %> </p>
-<p>Tags: <% @post.tags.each do |e| %>
-          <span class="label label-default"><%= e.name %></span>
-          <% end %>
-</p>
 <br>
 
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h1 class="panel-title lead"><%= @post.title %></h1>
+    <p class="pull-right label label-default">Category: <%= @category %> </p>
+    <p>Author: <%= @post.user_full_name %>
+  </div>
+  <div class="panel-body">
+    <p>Body: <%= @post.body %> </p>
+    <br>
+    <p>Created: <%= @post.created_at %> </p>
+    <p>Tags: <% @post.tags.each do |e| %>
+              <span class="label label-default"><%= e.name %></span>
+              <% end %>
+    </p>
+  </div>
+  <div class="panel-footer">
+
+
+
+
+<!-- Ability to edit a post -->
 <% if can? :edit, @post %>
-<%= link_to "Edit", edit_post_path(@post) %>
+  <%= link_to edit_post_path(@post), class: "btn btn-xs btn-success" do %>
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit Post
+  <% end %>
 <% end %>
+<!--  End of ability to edit a post -->
+
+<!-- Ability to delete a post -->
 <% if can? :destroy, @post %>
-<%= link_to "Delete", post_path(@post),
-                      method: :delete,
-                      data: {confirm: "Are you sure you want to delete #{@post.title}?"} %>
+<%= link_to post_path(@post), class: "btn btn-xs btn-primary",
+                      data: {confirm: "Are you sure you want to delete #{@post.title}?"},
+                      method: :delete do %>
+      <i class="fa fa-trash-o" aria-hidden="true"></i> Delete Post
+  <% end %>
 <% end %>
+<!--  End of ability to delete a post-->
 
 <!-- Ability to add a post as favourite -->
 <% if user_signed_in? %>
-  <div id="post-favourite">
+  <div id="post-favourite" class="btn-group ">
     <%= render "/favourites/favourite" %>
   </div>
 <% end %>
@@ -28,16 +48,20 @@
 
 <!--  Ability to like a post -->
 <% if user_signed_in? %>
-  <div id="post-like">
+  <div id="post-like" class="btn-group">
     <%= render "/likes/like" %>
   </div>
 <% end %>
 <!--  End of Ability to like a post -->
 
-<br>
+
+  </div>
+</div>
+<!-- End of the Post Panel -->
+
+
 <br>
 <h2>Comments</h2>
-<hr>
 <div id="comments">
 <%= render "/comments/comments", comments: @post.comments %>
 </div>
@@ -66,6 +90,6 @@
 <% if user_signed_in? %>
 <h2>Add a comment</h2>
   <div id="comment-form">
-    <%= render "/comments/form" %>
+    <%= render "/comments/form", comment: @comment %>
   </div>
 <% end %>
