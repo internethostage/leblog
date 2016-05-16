@@ -1,24 +1,38 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  before_action :post, only: [:create, :destroy]
 
   def create
     like          = Like.new
-    post          = Post.find params[:post_id]
     like.post     = post
     like.user     = current_user
-    if like.save
-      redirect_to post_path(post), notice: "Thanks for liking!"
-    else
-      redirect_to post_path(post), alert: "Can't like! Liked already?"
+    respond_to do |format|
+      if like.save
+        format.html { redirect_to post_path(post), notice: "Thanks for liking!" }
+        format.js   { render }
+      else
+        format.html { redirect_to post_path(post), alert: "Can't like! Liked already?" }
+        format.js   { render js: "alert('Already in your likes, please refresh the page!');" }
+      end
     end
   end
 
   def destroy
-    post = Post.find params[:post_id]
     like     = current_user.likes.find params[:id]
     like.destroy
-    redirect_to post_path(post), notice: "Like removed!"
+    respond_to do |format|
+      format.html { redirect_to post_path(post), notice: "Like removed!"}
+      format.js   { render }
+    end
   end
+
+
+  private
+
+  def post
+    @post ||= Post.find params[:post_id]
+  end
+
 
 
 end

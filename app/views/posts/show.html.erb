@@ -17,17 +17,22 @@
                       method: :delete,
                       data: {confirm: "Are you sure you want to delete #{@post.title}?"} %>
 <% end %>
+
+<!-- Ability to add a post as favourite -->
 <% if user_signed_in? %>
   <div id="post-favourite">
     <%= render "/favourites/favourite" %>
   </div>
 <% end %>
+<!--  End of Ability to add a post as favourite-->
 
-<% if user_signed_in? && @post.liked_by?(current_user) %>
-  <%= link_to "Remove Like", post_like_path(@post, @post.likes_for(current_user)), method: :delete %>
-<% else %>
-  <%= link_to "Like", post_likes_path(@post), method: :post   %>
+<!--  Ability to like a post -->
+<% if user_signed_in? %>
+  <div id="post-like">
+    <%= render "/likes/like" %>
+  </div>
 <% end %>
+<!--  End of Ability to like a post -->
 
 <br>
 <br>
