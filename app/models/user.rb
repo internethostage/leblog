@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :favourited_posts, through: :favourites, source: :post
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
+
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true,

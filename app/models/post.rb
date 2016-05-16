@@ -7,6 +7,9 @@ class Post < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
 
+  has_many :likes, dependent: :destroy
+  has_many :user_likes, through: :likes, source: :user
+
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
@@ -42,6 +45,14 @@ validates :body, {presence: {message: "can't be blank!"}}
 
   def favourites_for(user)
   favourites.find_by_user_id user if user
+  end
+
+  def liked_by?(user)
+    likes.find_by_user_id(user.id).present?
+  end
+
+  def likes_for(user)
+    likes.find_by_user_id user if user
   end
 
 
