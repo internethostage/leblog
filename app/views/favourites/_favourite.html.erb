@@ -1,5 +1,9 @@
 <% if @post.favourited_by?(current_user) %>
-  <%= link_to "Remove from favourites", post_favourite_path(@post, @post.favourites_for(current_user)), remote: true, method: :delete %>
+  <%= link_to post_favourite_path(@post, @post.favourites_for(current_user)), remote: true, class: "btn btn-xs btn-warning", method: :delete do %>
+  <i class="fa fa-star" aria-hidden="true"></i> Remove from favourites
+  <% end %>
 <% else %>
-  <%= link_to "Add to favourites", post_favourites_path(@post), remote: true, method: :post %>
+  <%= link_to post_favourites_path(@post), remote: true, class: "btn btn-xs btn-warning", method: :post do %>
+    <i class="fa fa-star-o" aria-hidden="true"></i> Add to favourites
+  <% end %>
 <% end %>
