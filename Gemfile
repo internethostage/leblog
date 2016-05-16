@@ -56,6 +56,8 @@ gem 'rack-cors', :require => 'rack/cors'
 
 # Adds oauth via twitter
 gem 'omniauth-twitter'
+# Adds oauth via github
+gem 'omniauth-github'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

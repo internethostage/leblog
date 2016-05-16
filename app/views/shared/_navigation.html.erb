@@ -44,7 +44,6 @@
                       data: {confirm: "are you sure you want to log out?"}%></li>
         <% else %>
           <li class="<%= 'active' if current_page?(new_session_path) %>"><a href="<%= new_session_path %>">Login</a></li>
-          <li class="<%= 'active' if current_page?(sign_in_with_twitter_path) %>"><a href="<%= sign_in_with_twitter_path %>">Sign in with Twitter</a></li>
           <li class="<%= 'active' if current_page?(new_user_path) %>"><a href="<%= new_user_path %>">Sign Up</a></li>
         <% end %>
       </ul>
