@@ -8,7 +8,6 @@ h1#search {
 form#search-form {
     display: inline-block;
     float: right;
-    margin-top: 20px;
     margin-right: 70px;
 }
 
@@ -39,4 +38,18 @@ h5.panel-title {
 }
 h6.panel-title {
     font-size: 10px;
-} 
+}
+
+#post-index-title {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.comment-gradient {
+  background: rgb(254,255,255);
+  background: -moz-linear-gradient(top,  rgba(254,255,255,1) 0%, rgba(221,241,249,1) 100%);
+  background: -webkit-linear-gradient(top,  rgba(254,255,255,1) 0%,rgba(221,241,249,1) 100%);
+  background: linear-gradient(to bottom,  rgba(254,255,255,1) 0%,rgba(221,241,249,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffff', endColorstr='#ddf1f9',GradientType=0 );
+
+}
