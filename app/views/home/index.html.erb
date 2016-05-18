@@ -1,1 +1,42 @@
-<h1>Hello!</h1>
+<header class="intro-header front-page-image">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1><i class="fa fa-leaf" aria-hidden="true" style="color: #18BC9C"></i>LeBlog</h1>
+                    <hr class="small">
+                    <span class="subheading">One dream, one team &amp; one blog to post them all</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-offset-1 col-lg-10 col-md-offset-1 col-sm-offset-1 col-sm-10 col-xs-12">
+        <% @posts.each do |post| %>
+        <div class="panel panel-info">
+          <div class="panel-heading panel-title-gradient">
+            <h2 class="panel-title lead"><%= post.title %></h2>
+            <p class="pull-right label label-default">Category: <%= post.category %> </p>
+            <p>Author: <%= post.user_full_name %>
+          </div>
+          <div class="panel-body">
+            <p>Body: <%= post.body %> </p>
+            <br>
+            <p>Created: <%= post.created_at %> </p>
+            <p>Tags: <% post.tags.each do |e| %>
+                      <span class="label label-default"><%= e.name %></span>
+                      <% end %>
+            </p>
+          </div>
+          <div class="panel-footer">
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>
