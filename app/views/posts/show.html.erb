@@ -4,14 +4,15 @@
   <div class="panel-heading panel-title-gradient">
     <h2 class="panel-title lead"><%= @post.title %></h2>
     <p class="pull-right label label-default">Category: <%= @category %> </p>
-    <p>Author: <%= @post.user_full_name %>
+    <p>Posted by <%= @post.user_full_name %> on <span class="post-meta"> <%= @post.created_at.strftime("%b %d, %Y") %></span></p>
   </div>
   <div class="panel-body">
-    <p>Body: <%= @post.body %> </p>
+    <p><%= @post.body %> </p>
     <br>
-    <p>Created: <%= @post.created_at %> </p>
-    <p>Tags: <% @post.tags.each do |e| %>
+    <p class="pull-right"><% if @post.tags.any? %> Tags: 
+              <% @post.tags.each do |e| %>
               <span class="label label-default"><%= e.name %></span>
+              <% end %>
               <% end %>
     </p>
   </div>

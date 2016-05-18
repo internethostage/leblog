@@ -20,18 +20,13 @@
         <% @posts.each do |post| %>
         <div class="panel panel-info">
           <div class="panel-heading panel-title-gradient">
-            <h2 class="panel-title lead"><%= post.title %></h2>
+            <h2 class="panel-title lead"><%= link_to post.title, post_path(post) %></h2>
             <p class="pull-right label label-default">Category: <%= post.category %> </p>
-            <p>Author: <%= post.user_full_name %>
+            <p>Posted by <%= post.user_full_name %> on <span class="post-meta"> <%= post.created_at.strftime("%b %d, %Y") %></span></p>
           </div>
           <div class="panel-body">
-            <p>Body: <%= post.body %> </p>
+            <p><%= post.body %> </p>
             <br>
-            <p>Created: <%= post.created_at %> </p>
-            <p>Tags: <% post.tags.each do |e| %>
-                      <span class="label label-default"><%= e.name %></span>
-                      <% end %>
-            </p>
           </div>
           <div class="panel-footer">
           </div>
