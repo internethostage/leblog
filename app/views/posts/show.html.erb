@@ -7,9 +7,11 @@
     <p>Posted by <%= @post.user_full_name %> on <span class="post-meta"> <%= @post.created_at.strftime("%b %d, %Y") %></span></p>
   </div>
   <div class="panel-body">
-    <p><%= @post.body %> </p>
+    <div>
+      <%= render "/posts/postbody" %>
+    </div>
     <br>
-    <p class="pull-right"><% if @post.tags.any? %> Tags: 
+    <p class="pull-right"><% if @post.tags.any? %> Tags:
               <% @post.tags.each do |e| %>
               <span class="label label-default"><%= e.name %></span>
               <% end %>
