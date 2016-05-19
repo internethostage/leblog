@@ -21,11 +21,15 @@
         <div class="panel panel-info">
           <div class="panel-heading panel-title-gradient">
             <h2 class="panel-title lead"><%= link_to post.title, post_path(post) %></h2>
-            <p class="pull-right label label-default">Category: <%= post.category %> </p>
+            <% if post.category %>
+            <p class="pull-right label label-default">Category: <%= post.category.title.titleize %> </p>
+            <% end %>
             <p>Posted by <%= post.user_full_name %> on <span class="post-meta"> <%= post.created_at.strftime("%b %d, %Y") %></span></p>
           </div>
           <div class="panel-body">
-            <p><%= post.body %> </p>
+            <% post.body_snippet_extended.split("\r").each do |par| %>
+            <p><%= par %> </p>
+            <% end %>
             <br>
           </div>
           <div class="panel-footer">
@@ -33,5 +37,20 @@
         </div>
         <% end %>
     </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-offset-5 col-md-6 col-xs-offset-5">
+      <a href="<%= posts_path %>" class="btn btn-primary btn-lg">Read More Posts...</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 </div>

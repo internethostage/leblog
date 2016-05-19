@@ -38,9 +38,9 @@ class PostsController < ApplicationController
   def index
     # @posts = Post.all
     if params[:search]
-      @posts = Post.search(params[:search]).order("created_at").paginate(:page => params[:page], :per_page => 10)
+      @posts = Post.search(params[:search]).order("created_at desc").paginate(:page => params[:page], :per_page => 10)
     else
-      @posts = Post.paginate(:page => params[:page], :per_page => 10)
+      @posts = Post.order("created_at desc").paginate(:page => params[:page], :per_page => 10)
     end
     respond_to do |format|
       format.html {render}
@@ -73,6 +73,7 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+
 
 
 private

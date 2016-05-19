@@ -35,6 +35,14 @@ validates :body, {presence: {message: "can't be blank!"}}
     end
   end
 
+  def body_snippet_extended
+    if body && body.length > 1000
+      body[0..1000] + "..."
+    else
+      body
+    end
+  end
+
   def user_full_name
     user ? user.full_name : ""
   end
