@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get "/auth/twitter", as: :sign_in_with_twitter
   get "/auth/github", as: :sign_in_with_github
+  get "/auth/linkedin", as: :sign_in_with_linkedin
   get "/auth/:provider/callback" => "callbacks#index"
 
   resources :sessions, only: [:new, :create] do
