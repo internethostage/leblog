@@ -1,9 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post
-cd 
   before_action :find_and_authorize_comment, only: :destroy
-
 
   def new
     @comment = Comment.new
