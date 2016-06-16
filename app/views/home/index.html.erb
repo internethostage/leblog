@@ -27,9 +27,7 @@
             <p>Posted by <%= post.user_full_name %> on <span class="post-meta"> <%= post.created_at.strftime("%b %d, %Y") %></span></p>
           </div>
           <div class="panel-body">
-            <% post.body_snippet_extended.split("\r").each do |par| %>
-            <p><%= par %> </p>
-            <% end %>
+            <%= markdown post.body_snippet_extended %>
             <br>
           </div>
           <div class="panel-footer">

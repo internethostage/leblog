@@ -32,6 +32,7 @@ gem 'api-pagination'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan', '~> 1.13', '>= 1.13.1'
 
+# Style gems. Bootstrap, vendor prefixer, boostwatch theme, font-awesome
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
@@ -44,6 +45,10 @@ gem 'simple_form'
 gem 'compass-rails'
 gem 'chosen-rails'
 gem 'bootstrap-chosen-rails'
+
+# These 2 gems help with markdown of blog posts and higlights
+gem 'pygments.rb'
+gem 'redcarpet'
 
 #This gem helps with turbolinks issues on the chosen gem above.
 gem 'jquery-turbolinks'
