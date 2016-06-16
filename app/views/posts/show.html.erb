@@ -8,7 +8,7 @@
   </div>
   <div class="panel-body">
     <div>
-      <%= render "/posts/postbody" %>
+      <%= simple_format @post.body %>
     </div>
     <br>
     <p class="pull-right"><% if @post.tags.any? %> Tags:

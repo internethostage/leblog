@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post
-  before_action :find_comment, except: :create
+cd 
   before_action :find_and_authorize_comment, only: :destroy
 
 
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     if @comment.update comment_params
       respond_to do |format|
         format.html { redirect_to post_path(@post) }
-        format.js { render }
+        format.js   { render }
       end
     else
       render :edit

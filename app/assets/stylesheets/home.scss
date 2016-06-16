@@ -56,8 +56,8 @@ nav.navbar.navbar-default.navbar-fixed-top {
   margin-top: 0;
   font-size: 50px;
 }
-.intro-header .site-heading .subheading,
-.intro-header .page-heading .subheading {
+.intro-header .site-heading .blog-subtitle,
+.intro-header .page-heading .blog-subtitle {
   font-size: 24px;
   line-height: 1.1;
   display: block;
@@ -74,12 +74,12 @@ nav.navbar.navbar-default.navbar-fixed-top {
 .intro-header .post-heading h1 {
   font-size: 35px;
 }
-.intro-header .post-heading .subheading,
+.intro-header .post-heading .blog-subtitle,
 .intro-header .post-heading .meta {
   line-height: 1.1;
   display: block;
 }
-.intro-header .post-heading .subheading {
+.intro-header .post-heading .blog-subtitle {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
   margin: 10px 0 30px;
@@ -98,9 +98,13 @@ nav.navbar.navbar-default.navbar-fixed-top {
   .intro-header .post-heading h1 {
     font-size: 55px;
   }
-  .intro-header .post-heading .subheading {
+  .intro-header .post-heading .blog-subtitle {
     font-size: 30px;
   }
+}
+
+.blog-subtitle {
+  background-color: rgba(35,83,138,0.4);
 }
 
 .post-meta {
