@@ -33,7 +33,7 @@ RSpec.describe Post, type: :model do
     end
 
     it "returns the body if its 100 characters or less" do
-      p = Post.new title: "Welcome" body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+      p = Post.new title: "Welcome", body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit"
       expect(p.body_snippet).to eql("Lorem ipsum dolor sit amet, consectetur adipisicing elit")
     end
 
