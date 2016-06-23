@@ -5,7 +5,8 @@ RSpec.describe PostsController, type: :controller do
   describe "#new" do
     let(:post) { FactoryGirl.create(:post) }
     let(:user) { FactoryGirl.create(:user) }
-    describe "with a signed in user" do
+
+    context "with a signed in user" do
       before { request.session[:user_id] = user.id}
 
       it "renders the new template" do
@@ -19,7 +20,7 @@ RSpec.describe PostsController, type: :controller do
       end
     end
 
-    describe "without a signed in user" do
+    context "without a signed in user" do
       it "redirects to sign up page" do
         get :new, post_id: post.id
         expect(response).to redirect_to new_session_path
@@ -30,7 +31,8 @@ RSpec.describe PostsController, type: :controller do
   describe "#create" do
     let(:createpost) { FactoryGirl.create(:post) }
     let(:user) { FactoryGirl.create(:user) }
-    describe "with a signed in user" do
+
+    context "with a signed in user" do
       before { request.session[:user_id] = user.id}
 
       describe "with valid attributes" do
@@ -81,7 +83,7 @@ RSpec.describe PostsController, type: :controller do
       end
     end
 
-    describe "without a signed in user" do
+    context "without a signed in user" do
       before { request.session[:user_id] = nil}
       def valid_request
         post :create, post: FactoryGirl.attributes_for(:post)
@@ -134,19 +136,20 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "#edit" do
+
     it "renders the edit template"
     it "sets an instance variable with the passed id"
 
   end
 
   describe "#update" do
-    describe "with valid params" do
+    context "with valid params" do
       it "updates the record whose id is passed"
       it "redirects to the show page"
       it "sets a flash notice message"
     end
 
-    describe "with invalid params" do
+    context "with invalid params" do
       it "doesn't update the record"
       it "renders the edit template"
     end
